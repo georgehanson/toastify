@@ -211,6 +211,8 @@ class Toastify {
         return this.levels.default.fire(this.options, title, body);
     }
 }
+/* harmony export (immutable) */ __webpack_exports__["Toastify"] = Toastify;
+
 /* harmony default export */ __webpack_exports__["default"] = (new Toastify());
 
 
