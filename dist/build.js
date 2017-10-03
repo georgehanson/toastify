@@ -68,19 +68,22 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-class BaseLevel {
-    buildNotification(options, type, title, body = null) {
-        let notification = document.createElement('div');
+var BaseLevel = (function () {
+    function BaseLevel() {
+    }
+    BaseLevel.prototype.buildNotification = function (options, type, title, body) {
+        if (body === void 0) { body = null; }
+        var notification = document.createElement('div');
         notification.classList.add('toastify');
-        notification.classList.add(`toastify-${options.position}`);
-        notification.classList.add(`toastify-${type}`);
-        let titleArea = document.createElement('span');
+        notification.classList.add("toastify-" + options.position);
+        notification.classList.add("toastify-" + type);
+        var titleArea = document.createElement('span');
         titleArea.classList.add('toastify-title');
         titleArea.innerHTML = title;
-        let bodyArea = document.createElement('span');
+        var bodyArea = document.createElement('span');
         bodyArea.classList.add('toastify-content');
         bodyArea.innerHTML = body;
-        let cancelIcon = document.createElement('span');
+        var cancelIcon = document.createElement('span');
         cancelIcon.classList.add('toastify-cancel-icon');
         cancelIcon.innerHTML = '&#x2716;';
         notification.appendChild(titleArea);
@@ -89,32 +92,33 @@ class BaseLevel {
         }
         notification.appendChild(cancelIcon);
         return notification;
-    }
-    showNotification(notification, options) {
-        this.fadeIn(notification, options.speed).then(() => {
-            this.setUpEventListener(notification, options);
-            setTimeout(() => {
-                this.hideNotification(notification, options);
+    };
+    BaseLevel.prototype.showNotification = function (notification, options) {
+        var _this = this;
+        this.fadeIn(notification, options.speed).then(function () {
+            _this.setUpEventListener(notification, options);
+            setTimeout(function () {
+                _this.hideNotification(notification, options);
             }, options.delay);
         });
-    }
-    hideNotification(notification, options) {
-        this.fadeOut(notification, options.speed).then(() => {
+    };
+    BaseLevel.prototype.hideNotification = function (notification, options) {
+        this.fadeOut(notification, options.speed).then(function () {
             notification.parentNode.removeChild(notification);
         });
-    }
-    setUpEventListener(notification, options) {
-        let element = notification.children.item(2);
+    };
+    BaseLevel.prototype.setUpEventListener = function (notification, options) {
+        var element = notification.children.item(2);
         element.addEventListener('click', function closeIconClicked(event) {
             event.preventDefault();
             element.removeEventListener("click", closeIconClicked, false);
             this.hideNotification(notification, options);
         }.bind(this));
-    }
-    fadeOut(element, speed) {
-        return new Promise((resolve, reject) => {
-            let opacity = 1;
-            let timer = setInterval(() => {
+    };
+    BaseLevel.prototype.fadeOut = function (element, speed) {
+        return new Promise(function (resolve, reject) {
+            var opacity = 1;
+            var timer = setInterval(function () {
                 if (opacity <= 0.1) {
                     clearInterval(timer);
                     element.style.display = 'none';
@@ -125,11 +129,11 @@ class BaseLevel {
                 opacity -= opacity * 0.1;
             }, speed);
         });
-    }
-    fadeIn(element, speed) {
-        return new Promise((resolve, reject) => {
-            let opacity = 0;
-            let timer = setInterval(() => {
+    };
+    BaseLevel.prototype.fadeIn = function (element, speed) {
+        return new Promise(function (resolve, reject) {
+            var opacity = 0;
+            var timer = setInterval(function () {
                 if (opacity > 1) {
                     clearInterval(timer);
                     resolve();
@@ -143,10 +147,10 @@ class BaseLevel {
                 opacity += opacity * 0.1;
             }, speed);
         });
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = BaseLevel;
-
+    };
+    return BaseLevel;
+}());
+/* harmony default export */ __webpack_exports__["a"] = (BaseLevel);
 
 
 /***/ }),
@@ -163,6 +167,7 @@ module.exports = __webpack_require__(8);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Toastify", function() { return Toastify; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__levels_success__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__levels_info__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__levels_warning__ = __webpack_require__(5);
@@ -173,8 +178,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-class Toastify {
-    constructor() {
+var Toastify = (function () {
+    function Toastify() {
         this.levels = {
             success: __WEBPACK_IMPORTED_MODULE_0__levels_success__["a" /* default */],
             info: __WEBPACK_IMPORTED_MODULE_1__levels_info__["a" /* default */],
@@ -188,30 +193,35 @@ class Toastify {
             speed: 10
         };
     }
-    setOption(key, value) {
+    Toastify.prototype.setOption = function (key, value) {
         if (this.options.hasOwnProperty(key)) {
             this.options[key] = value;
             return;
         }
-        throw `The option key ${key} is not a valid option`;
-    }
-    success(title, body = null) {
+        throw "The option key " + key + " is not a valid option";
+    };
+    Toastify.prototype.success = function (title, body) {
+        if (body === void 0) { body = null; }
         this.levels.success.fire(this.options, title, body);
-    }
-    info(title, body = null) {
+    };
+    Toastify.prototype.info = function (title, body) {
+        if (body === void 0) { body = null; }
         this.levels.info.fire(this.options, title, body);
-    }
-    warning(title, body = null) {
+    };
+    Toastify.prototype.warning = function (title, body) {
+        if (body === void 0) { body = null; }
         this.levels.warning.fire(this.options, title, body);
-    }
-    error(title, body = null) {
+    };
+    Toastify.prototype.error = function (title, body) {
+        if (body === void 0) { body = null; }
         this.levels.error.fire(this.options, title, body);
-    }
-    default(title, body = null) {
+    };
+    Toastify.prototype.default = function (title, body) {
+        if (body === void 0) { body = null; }
         return this.levels.default.fire(this.options, title, body);
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["Toastify"] = Toastify;
+    };
+    return Toastify;
+}());
 
 /* harmony default export */ __webpack_exports__["default"] = (new Toastify());
 
@@ -222,14 +232,30 @@ class Toastify {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(0);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 
-/* harmony default export */ __webpack_exports__["a"] = (new class Success extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
-    fire(options, title, body = null) {
-        let notification = this.buildNotification(options, 'success', title, body);
+/* harmony default export */ __webpack_exports__["a"] = (new (function (_super) {
+    __extends(Success, _super);
+    function Success() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Success.prototype.fire = function (options, title, body) {
+        if (body === void 0) { body = null; }
+        var notification = this.buildNotification(options, 'success', title, body);
         document.body.appendChild(notification);
         this.showNotification(notification, options);
-    }
-});
+    };
+    return Success;
+}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */])));
 
 
 /***/ }),
@@ -238,14 +264,30 @@ class Toastify {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(0);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 
-/* harmony default export */ __webpack_exports__["a"] = (new class Info extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
-    fire(options, title, body = null) {
-        let notification = this.buildNotification(options, 'info', title, body);
+/* harmony default export */ __webpack_exports__["a"] = (new (function (_super) {
+    __extends(Info, _super);
+    function Info() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Info.prototype.fire = function (options, title, body) {
+        if (body === void 0) { body = null; }
+        var notification = this.buildNotification(options, 'info', title, body);
         document.body.appendChild(notification);
         this.showNotification(notification, options);
-    }
-});
+    };
+    return Info;
+}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */])));
 
 
 /***/ }),
@@ -254,14 +296,30 @@ class Toastify {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(0);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 
-/* harmony default export */ __webpack_exports__["a"] = (new class Warning extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
-    fire(options, title, body = null) {
-        let notification = this.buildNotification(options, 'warning', title, body);
+/* harmony default export */ __webpack_exports__["a"] = (new (function (_super) {
+    __extends(Warning, _super);
+    function Warning() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Warning.prototype.fire = function (options, title, body) {
+        if (body === void 0) { body = null; }
+        var notification = this.buildNotification(options, 'warning', title, body);
         document.body.appendChild(notification);
         this.showNotification(notification, options);
-    }
-});
+    };
+    return Warning;
+}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */])));
 
 
 /***/ }),
@@ -270,14 +328,30 @@ class Toastify {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(0);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 
-/* harmony default export */ __webpack_exports__["a"] = (new class Error extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
-    fire(options, title, body = null) {
-        let notification = this.buildNotification(options, 'error', title, body);
+/* harmony default export */ __webpack_exports__["a"] = (new (function (_super) {
+    __extends(Error, _super);
+    function Error() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Error.prototype.fire = function (options, title, body) {
+        if (body === void 0) { body = null; }
+        var notification = this.buildNotification(options, 'error', title, body);
         document.body.appendChild(notification);
         this.showNotification(notification, options);
-    }
-});
+    };
+    return Error;
+}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */])));
 
 
 /***/ }),
@@ -286,14 +360,30 @@ class Toastify {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base__ = __webpack_require__(0);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 
-/* harmony default export */ __webpack_exports__["a"] = (new class Default extends __WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */] {
-    fire(options, title, body = null) {
-        let notification = this.buildNotification(options, 'default', title, body);
+/* harmony default export */ __webpack_exports__["a"] = (new (function (_super) {
+    __extends(Default, _super);
+    function Default() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Default.prototype.fire = function (options, title, body) {
+        if (body === void 0) { body = null; }
+        var notification = this.buildNotification(options, 'default', title, body);
         document.body.appendChild(notification);
         this.showNotification(notification, options);
-    }
-});
+    };
+    return Default;
+}(__WEBPACK_IMPORTED_MODULE_0__base__["a" /* default */])));
 
 
 /***/ }),
