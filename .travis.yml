@@ -7,3 +7,5 @@ cache:
 before_script:
   - npm install
 script: npm run test
+after_success:
+  - codecov
