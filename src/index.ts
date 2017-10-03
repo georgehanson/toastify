@@ -86,7 +86,7 @@ class Toastify {
      * @param {string =     null}        body [description]
      */
     public default(title: string, body: string = null): void {
-        this.levels.default.fire(this.options, title, body);
+        return this.levels.default.fire(this.options, title, body);
     }
 }
 
