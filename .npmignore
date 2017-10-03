@@ -1,0 +1,10 @@
+.gitignore
+.babelrc
+.idea
+npm-debug.log
+tests
+.travis.yml
+index.html
+index.ts
+webpack.config.js
+yarn-error.log
