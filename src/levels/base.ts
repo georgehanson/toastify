@@ -68,7 +68,7 @@ export default class BaseLevel {
      * @param {HTMLElement} notification [description]
      */
     protected setUpEventListener(notification: HTMLElement, options: any): void {
-        let element = notification.children.item(2);
+        let element = notification.lastElementChild;
 
         element.addEventListener('click', function closeIconClicked(event) {
             event.preventDefault();
