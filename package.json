@@ -8,12 +8,14 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
+    "coverage": "./coverage/lcov.info | codecov"
     "build": "./node_modules/.bin/rollup -c"
   },
   "devDependencies": {
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-2": "^6.24.1",
+    "codecov.io": "^0.1.6",
     "jest": "^21.2.1",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
@@ -24,6 +26,8 @@
     "typescript": "^2.5.3"
   },
   "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "<rootDir>/coverage",
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },

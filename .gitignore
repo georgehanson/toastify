@@ -8,3 +8,4 @@ dist/mix-manifest.json
 yarn-error.log
 dist/index.js
 index.ts
+coverage
