@@ -1,6 +1,6 @@
 {
   "name": "toastify",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Javascript toaster notifications without any dependencies",
   "main": "dist/build.js",
   "repository": "git@github.com:GeorgeHanson/toastify.git",
