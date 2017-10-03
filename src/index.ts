@@ -1,5 +1,3 @@
-import './scss/toastify.scss';
-
 import Success from "./levels/success";
 import Info from "./levels/info";
 import Warning from "./levels/warning";
