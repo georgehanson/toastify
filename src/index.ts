@@ -4,7 +4,7 @@ import Warning from "./levels/warning";
 import Error from "./levels/error";
 import Default from "./levels/default";
 
-class Toastify {
+export class Toastify {
 
     /**
      * The different type of levels

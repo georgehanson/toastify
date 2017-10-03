@@ -18,7 +18,8 @@
     "outDir": "build",
     "lib": [
       "dom",
-      "es6"
+      "es5",
+      "es2015.promise"
     ],
   },
   "exclude": [
