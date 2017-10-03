@@ -4,3 +4,5 @@ coverage
 app.js
 index.html
 yarn.lock
+dist/mix-manifest.json
+yarn-error.log
