@@ -68,7 +68,7 @@ var BaseLevel = function () {
      * @param {HTMLElement} notification [description]
      */
     BaseLevel.prototype.setUpEventListener = function (notification, options) {
-        var element = notification.children.item(2);
+        var element = notification.lastElementChild;
         element.addEventListener('click', function closeIconClicked(event) {
             event.preventDefault();
             element.removeEventListener("click", closeIconClicked, false);
