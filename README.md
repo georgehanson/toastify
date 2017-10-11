@@ -25,7 +25,7 @@ Toastify.success('Title', 'This is the body of the notification');
 As you can see, the first parameter is the title of the notification. The second parameter is the body, which is totally optional.
 
 ## Configuration
-There are a small number of options you can configure in this package. These are the `position`, `delay` and `speed`.
+There are a small number of options you can configure in this package. These are the `position`, `delay`, `element` and `speed`.
 
 To set an option, you can simply call the `setOption` method. Here is an example:
 
