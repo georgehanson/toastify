@@ -13,8 +13,6 @@ export default new class Warning extends BaseLevel implements Fireable {
     {
         let notification = this.buildNotification(options, 'warning', title, body);
 
-        document.body.appendChild(notification);
-
         this.showNotification(notification, options);
     }
 }

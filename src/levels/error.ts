@@ -13,8 +13,6 @@ export default new class Error extends BaseLevel implements Fireable {
     {
         let notification = this.buildNotification(options, 'error', title, body);
 
-        document.body.appendChild(notification);
-
         this.showNotification(notification, options);
     }
 }

@@ -13,8 +13,6 @@ export default new class Default extends BaseLevel implements Fireable {
     {
         let notification = this.buildNotification(options, 'default', title, body);
 
-        document.body.appendChild(notification);
-
         this.showNotification(notification, options);
     }
 }

@@ -26,7 +26,8 @@ export class Toastify {
     protected options: any = {
         position: 'bottom-right',
         delay: 5000,
-        speed: 10
+        speed: 10,
+        element: 'body'
     };
 
     /**

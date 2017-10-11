@@ -43,6 +43,9 @@ export default class BaseLevel {
      * @param {any}         options      [description]
      */
     protected showNotification(notification: HTMLElement, options: any): void {
+        let target = this.getTarget(options);
+        target.appendChild(notification);
+
         this.fadeIn(notification, options.speed).then(() => {
             this.setUpEventListener(notification, options);
             setTimeout(() => {
@@ -128,5 +131,18 @@ export default class BaseLevel {
                  opacity += opacity * 0.1;
              }, speed);
          });
+     }
+
+    /**
+     * Get the target
+     *
+     * @param options
+     */
+    protected getTarget(options: any): HTMLElement | null {
+         if (options.element !== 'body') {
+             return document.getElementById(options.element);
+         }
+
+         return document.body;
      }
  }
