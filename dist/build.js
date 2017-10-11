@@ -45,6 +45,8 @@ var BaseLevel = function () {
      */
     BaseLevel.prototype.showNotification = function (notification, options) {
         var _this = this;
+        var target = this.getTarget(options);
+        target.appendChild(notification);
         this.fadeIn(notification, options.speed).then(function () {
             _this.setUpEventListener(notification, options);
             setTimeout(function () {
@@ -120,6 +122,17 @@ var BaseLevel = function () {
             }, speed);
         });
     };
+    /**
+     * Get the target
+     *
+     * @param options
+     */
+    BaseLevel.prototype.getTarget = function (options) {
+        if (options.element !== 'body') {
+            return document.getElementById(options.element);
+        }
+        return document.body;
+    };
     return BaseLevel;
 }();
 
@@ -139,7 +152,6 @@ var Success = new (function (_super) {
             body = null;
         }
         var notification = this.buildNotification(options, 'success', title, body);
-        document.body.appendChild(notification);
         this.showNotification(notification, options);
     };
     return Success;
@@ -162,7 +174,6 @@ var Info = new (function (_super) {
             body = null;
         }
         var notification = this.buildNotification(options, 'info', title, body);
-        document.body.appendChild(notification);
         this.showNotification(notification, options);
     };
     return Info;
@@ -185,7 +196,6 @@ var Warning = new (function (_super) {
             body = null;
         }
         var notification = this.buildNotification(options, 'warning', title, body);
-        document.body.appendChild(notification);
         this.showNotification(notification, options);
     };
     return Warning;
@@ -208,7 +218,6 @@ var Error = new (function (_super) {
             body = null;
         }
         var notification = this.buildNotification(options, 'error', title, body);
-        document.body.appendChild(notification);
         this.showNotification(notification, options);
     };
     return Error;
@@ -231,7 +240,6 @@ var Default = new (function (_super) {
             body = null;
         }
         var notification = this.buildNotification(options, 'default', title, body);
-        document.body.appendChild(notification);
         this.showNotification(notification, options);
     };
     return Default;
@@ -258,7 +266,8 @@ var Toastify = function () {
         this.options = {
             position: 'bottom-right',
             delay: 5000,
-            speed: 10
+            speed: 10,
+            element: 'body'
         };
     }
     /**

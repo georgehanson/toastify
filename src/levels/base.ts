@@ -138,7 +138,7 @@ export default class BaseLevel {
      *
      * @param options
      */
-    protected getTarget(options: any): HTMLElement | null {
+    protected getTarget(options: any): HTMLElement {
          if (options.element !== 'body') {
              return document.getElementById(options.element);
          }
