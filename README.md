@@ -7,6 +7,8 @@
 
 Toastify is a lightweight Javascript package written in Typescript. It was created to provide toaster style notifications **without any dependencies**.
 
+View the blog article here - [Zero Dependency Toaster Notifications](https://www.georgehanson.co.uk/zero-dependency-toaster-notifications/)
+
 ## Installation
 You can install this package by simply running `npm install --save toastify` or `yarn add toastify`.
 
