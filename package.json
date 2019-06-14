@@ -4,38 +4,24 @@
   "description": "Javascript toaster notifications without any dependencies",
   "main": "dist/build.js",
   "repository": "git@github.com:GeorgeHanson/toastify.git",
-  "author": "George Hanson <george.w.hanson96@gmail.com>",
+  "author": "George Hanson <george@georgehanson.co.uk>",
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "coverage": "./coverage/lcov.info | codecov",
     "build": "./node_modules/.bin/rollup -c"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.14",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-2": "^6.24.1",
-    "codecov.io": "^0.1.6",
-    "jest": "^21.2.1",
+    "jest": "^24.8.0",
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-scss": "^0.3.0",
     "rollup-plugin-typescript": "^0.8.1",
-    "ts-jest": "^21.0.1",
+    "ts-jest": "^24.0.2",
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.3"
-  },
-  "jest": {
-    "collectCoverage": true,
-    "coverageDirectory": "<rootDir>/coverage",
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
   }
 }

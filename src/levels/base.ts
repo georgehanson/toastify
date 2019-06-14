@@ -7,11 +7,13 @@ export default class BaseLevel {
      * @param {string} title   [description]
      * @param {string} body    [description]
      */
-    protected buildNotification(options: any, type: string, title: string, body: string = null) {
+    public buildNotification(options: any, type: string, title: string, body: string = null) {
         let notification = document.createElement('div');
         notification.classList.add('toastify');
         notification.classList.add(`toastify-${options.position}`);
         notification.classList.add(`toastify-${type}`);
+        let notificationContent = document.createElement('div');
+        notificationContent.classList.add('toastify-content');
 
         let titleArea = document.createElement('span');
         titleArea.classList.add('toastify-title');
@@ -25,13 +27,15 @@ export default class BaseLevel {
         cancelIcon.classList.add('toastify-cancel-icon');
         cancelIcon.innerHTML = '&#x2716;';
 
-        notification.appendChild(titleArea);
+        notificationContent.appendChild(titleArea);
 
         if (body) {
-            notification.appendChild(bodyArea);
+            notificationContent.appendChild(bodyArea);
         }
 
-        notification.appendChild(cancelIcon);
+        notificationContent.appendChild(cancelIcon);
+
+        notification.appendChild(notificationContent);
 
         return notification;
     }
