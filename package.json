@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.14",
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-2": "^6.24.1",
