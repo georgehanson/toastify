@@ -21,6 +21,8 @@ var BaseLevel = function () {
         notification.classList.add('toastify');
         notification.classList.add("toastify-" + options.position);
         notification.classList.add("toastify-" + type);
+        var notificationContent = document.createElement('div');
+        notificationContent.classList.add('toastify-content');
         var titleArea = document.createElement('span');
         titleArea.classList.add('toastify-title');
         titleArea.innerHTML = title;
@@ -30,11 +32,12 @@ var BaseLevel = function () {
         var cancelIcon = document.createElement('span');
         cancelIcon.classList.add('toastify-cancel-icon');
         cancelIcon.innerHTML = '&#x2716;';
-        notification.appendChild(titleArea);
+        notificationContent.appendChild(titleArea);
         if (body) {
-            notification.appendChild(bodyArea);
+            notificationContent.appendChild(bodyArea);
         }
-        notification.appendChild(cancelIcon);
+        notificationContent.appendChild(cancelIcon);
+        notification.appendChild(notificationContent);
         return notification;
     };
     /**

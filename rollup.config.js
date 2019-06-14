@@ -3,9 +3,11 @@ import babel from 'rollup-plugin-babel';
 import scss from 'rollup-plugin-scss'
 
 export default {
-  entry: './src/index.ts',
-  dest: './dist/build.js',
-  format: 'es',
+  input: './src/index.ts',
+  output: {
+    format: 'es',
+    file: './dist/build.js'
+  },
   plugins: [
     typescript(),
     scss({
