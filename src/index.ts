@@ -10,7 +10,7 @@ export class Toastify {
      * The different type of levels
      * @type {object}
      */
-    protected levels: any = {
+    public levels: any = {
         success: Success,
         info: Info,
         warning: Warning,
