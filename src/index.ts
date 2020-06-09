@@ -3,6 +3,7 @@ import Info from "./levels/info";
 import Warning from "./levels/warning";
 import Error from "./levels/error";
 import Default from "./levels/default";
+import './scss/toastify.scss';
 
 export class Toastify {
 
