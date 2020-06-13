@@ -21,7 +21,7 @@
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-scss": "^0.3.0",
     "rollup-plugin-typescript": "^0.8.1",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^26.1.0",
     "ts-loader": "^2.3.7",
     "typescript": "^2.5.3"
   }
